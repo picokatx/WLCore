@@ -1,0 +1,14 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "typescript",
+			"tsconfig": "behavior_packs/mcwl BP/scripts/ts/tsconfig.json",
+			"problemMatcher": [
+				"$tsc"
+			],
+			"group": "build",
+			"label": "tsc: build - behavior_packs/mcwl BP/scripts/ts/tsconfig.json"
+		}
+	]
+}
