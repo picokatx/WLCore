@@ -1,0 +1,19 @@
+export {
+    Dimension as _Dimension,
+    Player as _Player,
+    Entity as _Entity,
+    Vector as _Vector,
+    Location as _Location,
+    BlockRaycastOptions as _BlockRaycastOptions,
+    EntityRaycastOptions as _EntityRaycastOptions,
+    Block as _Block,
+    IEntityComponent as _IEntityComponent,
+    EffectType as _EffectType,
+    Effect as _Effect,
+    BlockPermutation as _BlockPermutation,
+    BlockLocation as _BlockLocation,
+    BlockType as _BlockType,
+    ExplosionOptions as _ExplosionOptions,
+    EntityIterator as _EntityIterator,
+    EntityQueryOptions as _EntityQueryOptions
+} from "mojang-minecraft";

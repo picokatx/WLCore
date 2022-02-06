@@ -204,6 +204,3 @@ export enum CustomCharID {
     brewing_stand = '\u1AFE',
     cauldron = '\u1AFF',
 }
-export enum CustomEmoteID {
-
-}

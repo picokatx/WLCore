@@ -1,7 +1,7 @@
 import { Dimension, EntityIterator, Player } from "mojang-minecraft";
 import { ColorCodes } from "../constants/ColorCodes.js";
 import { CustomCharID } from "../constants/CustomCharID.js";
-import { Console } from "./Console.js";
+import { WLStream } from "./WLStream.js";
 import { getAttributes, getMethods } from "./StringifyObject.js";
 export const filter: RegExp = RegExp(/[^\w\d\s]/);
 export const notifPrefix: string = `${ColorCodes.grey}[${ColorCodes.darkgreen}${ColorCodes.bold}MCWL${ColorCodes.reset}${ColorCodes.grey}]`
@@ -50,7 +50,7 @@ export class PrintStream {
     }
     flush(): void {
         if (this.outputStream != "") {
-            this.queued.push(Console.tellraw(this.outputStream));
+            this.queued.push(WLStream.tellraw(this.outputStream));
             this.outputStream = "";
         }
     }
@@ -84,32 +84,32 @@ export class PrintStream {
     success(s: string, args?: any[]) {
         this.flush();
         if (args == null) {
-            this.queued.push(Console.tellraw(`${notifPrefix} ${ColorCodes.blue}${s}${ColorCodes.reset}`));
+            this.queued.push(WLStream.tellraw(`${notifPrefix} ${ColorCodes.blue}${s}${ColorCodes.reset}`));
         } else {
-            this.queued.push(Console.tellraw(`${notifPrefix} ${ColorCodes.blue}${this.format(s, args)}${ColorCodes.reset}`));
+            this.queued.push(WLStream.tellraw(`${notifPrefix} ${ColorCodes.blue}${this.format(s, args)}${ColorCodes.reset}`));
         }
     }
     info(s: string, args?: any[]) {
         this.flush();
         if (args == null) {
-            this.queued.push(Console.tellraw(`${notifPrefix} ${ColorCodes.grey}${s}${ColorCodes.reset}`));
+            this.queued.push(WLStream.tellraw(`${notifPrefix} ${ColorCodes.grey}${s}${ColorCodes.reset}`));
         } else {
-            this.queued.push(Console.tellraw(`${notifPrefix} ${ColorCodes.grey}${this.format(s, args)}${ColorCodes.reset}`));
+            this.queued.push(WLStream.tellraw(`${notifPrefix} ${ColorCodes.grey}${this.format(s, args)}${ColorCodes.reset}`));
         }
     }
     failure(s: string, args?: any[]) {
         this.flush();
         if (args == null) {
-            this.queued.push(Console.tellraw(`${notifPrefix} ${ColorCodes.darkred}${s}${ColorCodes.reset}`));
+            this.queued.push(WLStream.tellraw(`${notifPrefix} ${ColorCodes.darkred}${s}${ColorCodes.reset}`));
         } else {
-            this.queued.push(Console.tellraw(`${notifPrefix} ${ColorCodes.darkred}${this.format(s, args)}${ColorCodes.reset}`));
+            this.queued.push(WLStream.tellraw(`${notifPrefix} ${ColorCodes.darkred}${this.format(s, args)}${ColorCodes.reset}`));
         }
     }
     globalRun(s: string) {
-        this.queued.push(Console.globalRunCmd(s));
+        this.queued.push(WLStream.runGlobal(s));
     }
     run(s: string, player: Player) {
-        this.queued.push(Console.runCmd(s, player));
+        this.queued.push(WLStream.run(s, player));
     }
     format(s: string, args: any[]) {
         let a = Array.from(args);
@@ -131,18 +131,18 @@ export class PrintStream {
     }
     println(s: any, ...args: any): void {
         this.print(this.format(s, args));
-        this.queued.push(Console.tellraw(this.outputStream));
+        this.queued.push(WLStream.tellraw(this.outputStream));
         this.outputStream = "";
     }
     chat(s: string, player: Player, targets: EntityIterator) {
         this.flush();
         for (let i of targets) {
-            this.queued.push(Console.chat(this.replaceWithEmotes(s), player, (i as Player).name));
+            this.queued.push(WLStream.chat(this.replaceWithEmotes(s), player, (i as Player).name));
         }
     }
     sudoChat(s: string, name: string, target: string) {
         this.flush();
-        this.queued.push(Console.sudoChat(this.replaceWithEmotes(s), name, target));
+        this.queued.push(WLStream.sudoChat(this.replaceWithEmotes(s), name, target));
     }
     cleanText(s: string): string {
         return s.replace(RegExp(/(?<!\\)\"/g), "\\\"")
@@ -150,7 +150,7 @@ export class PrintStream {
     debug(s: string) {
         this.flush();
         if (this.debugEnabled) {
-            this.queued.push(Console.tellraw(`[${ColorCodes.blue}DEBUG${ColorCodes.reset}] ${this.cleanText(s)}`));
+            this.queued.push(WLStream.tellraw(`[${ColorCodes.blue}DEBUG${ColorCodes.reset}] ${this.cleanText(s)}`));
         }
     }
     replaceWithEmotes(s: string) {

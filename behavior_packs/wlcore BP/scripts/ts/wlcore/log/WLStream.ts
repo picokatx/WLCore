@@ -1,10 +1,11 @@
 import { Player } from "mojang-minecraft";
 
-export class Console {
-    static globalRunCmd(s: string) {
+export class WLStream {
+    
+    static runGlobal(s: string) {
         return `${s}`;
     }
-    static runCmd(s: string, player: Player) {
+    static run(s: string, player: Player) {
         return `execute @a[name=${player.name}] ~ ~ ~ ${s}`;
     }
     static chat(s: string, player: Player, target: string) {
