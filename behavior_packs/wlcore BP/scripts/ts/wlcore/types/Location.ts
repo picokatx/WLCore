@@ -1,4 +1,5 @@
 import { _Location } from "../constants/exports";
+import { BlockLocation } from "./BlockLocation";
 
 export class Location {
     _location: _Location
@@ -26,6 +27,9 @@ export class Location {
     }
     set z(coordinate: number) {
         this._location.z = coordinate
+    }
+    toBLockLocation(): BlockLocation {
+        return new BlockLocation(this.x,this.y,this.z)
     }
     equals(other: Location): boolean {
         return this._location.equals(other._location)

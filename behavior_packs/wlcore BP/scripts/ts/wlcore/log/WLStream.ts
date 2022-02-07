@@ -1,7 +1,6 @@
 import { Player } from "mojang-minecraft";
 
 export class WLStream {
-    
     static runGlobal(s: string) {
         return `${s}`;
     }

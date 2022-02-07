@@ -1,4 +1,5 @@
 import { _BlockLocation } from "../constants/exports";
+import { Location } from "./Location";
 
 export class BlockLocation {
     _blockLocation: _BlockLocation
@@ -27,11 +28,17 @@ export class BlockLocation {
             this._blockLocation = x
         }
     }
+    toLocation(): Location {
+        return new Location(this.x,this.y,this.z)
+    }
     equals(other: BlockLocation): boolean {
         return this._blockLocation.equals(other._blockLocation)
     }
     above(): BlockLocation {
         return new BlockLocation(this._blockLocation.above())
+    }
+    below(): BlockLocation {
+        return new BlockLocation(this.x,this.y-1,this.z)
     }
     blocksBetween(other: BlockLocation): BlockLocation[] {
         let ret: BlockLocation[] = []
