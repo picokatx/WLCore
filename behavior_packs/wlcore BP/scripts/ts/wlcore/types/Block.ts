@@ -1,7 +1,16 @@
-import { _Block, _BlockType} from "../constants/exports"
+import { _Block, _BlockInventoryComponent, _BlockLavaContainerComponent, _BlockPistonComponent, _BlockPotionContainerComponent, _BlockRecordPlayerComponent, _BlockSnowContainerComponent, _BlockType, _BlockWaterContainerComponent} from "../constants/exports"
 import { BlockPermutation } from "./BlockPermutation.js"
 import { BlockLocation } from "./BlockLocation"
 import { Dimension } from "./Dimension"
+export enum BlockComponents {
+    inventory = "minecraft:inventory",
+    lavaContainer = "minecraft:lava_container",
+    piston = "minecraft:piston",
+    potionContainer = "minecraft:potion_container",
+    recordPlayer = "minecraft:record_player",
+    snowContainer = "minecraft:snow_container",
+    waterContainer = "minecraft:water_container"
+}
 export class Block {
     _block: _Block
     constructor(_block:_Block) {
@@ -40,7 +49,28 @@ export class Block {
     get z(): number {
         return this.z
     }
-    getComponent(componentName: string): any {
+    get inventory(): _BlockInventoryComponent {
+        return this._block.getComponent("minecraft:inventory")
+    }
+    get lavaContainer(): _BlockLavaContainerComponent {
+        return this._block.getComponent("minecraft:lava_container")
+    }
+    get piston(): _BlockPistonComponent {
+        return this._block.getComponent("minecraft:piston")
+    }
+    get potionContainer(): _BlockPotionContainerComponent {
+        return this._block.getComponent("minecraft:potion_container")
+    }
+    get recordPlayer(): _BlockRecordPlayerComponent {
+        return this._block.getComponent("minecraft:record_player")
+    }
+    get snowContainer(): _BlockSnowContainerComponent {
+        return this._block.getComponent("minecraft:snow_container")
+    }
+    get waterContainer(): _BlockWaterContainerComponent {
+        return this._block.getComponent("minecraft:water_container")
+    }
+    getComponent(componentName: BlockComponents): any {
         return this._block.getComponent(componentName)
     }
     getTags(): string[] {

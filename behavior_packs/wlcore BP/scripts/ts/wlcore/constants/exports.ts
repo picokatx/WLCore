@@ -50,5 +50,18 @@ export {
     EntityUnderwaterMovementComponent as _EntityUnderwaterMovementComponent,
     World as _World,
     world as _world,
-    Events as _Events
+    Events as _Events,
+    BlockInventoryComponent as _BlockInventoryComponent,
+    BlockPistonComponent as _BlockPistonComponent,
+    BlockRecordPlayerComponent as _BlockRecordPlayerComponent,
+    BlockLavaContainerComponent as _BlockLavaContainerComponent,
+    BlockSnowContainerComponent as _BlockSnowContainerComponent,
+    BlockWaterContainerComponent as _BlockWaterContainerComponent,
+    BlockPotionContainerComponent as _BlockPotionContainerComponent,
+    ItemStack as _ItemStack,
+    ItemType as _ItemType,
+    ItemCooldownComponent as _ItemCooldownComponent,
+    ItemFoodComponent as _ItemFoodComponent,
+    ItemDurabilityComponent as _ItemDurabilityComponent,
+    ItemEnchantsComponent as _ItemEnchantsComponent
 } from "mojang-minecraft";

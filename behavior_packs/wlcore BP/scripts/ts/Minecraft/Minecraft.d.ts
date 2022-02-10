@@ -4680,6 +4680,29 @@ export class ItemDurabilityComponent {
 * When present on an item, this item is consumable by
 * entities.
 */
+export class Enchantment {
+  constructor(enchantmentType: EnchantmentType, level?: number)
+  level: number;
+  readonly type: EnchantmentType;
+}
+export class EnchantmentType {
+  readonly id: string;
+  readonly maxLevel: number;
+}
+export class EnchantmentList {
+  constructor(enchantmentSlot: number)
+  readonly slot: number
+  addEnchantment(enchantment: Enchantment): boolean
+  canAddEnchantment(enchantment: Enchantment): boolean
+  getEnchantment(enchantmentType: EnchantmentType): Enchantment
+  hasEnchantment(enchantmentType: EnchantmentType): number
+  removeEnchantment(enchantmentType: EnchantmentType): void
+}
+export class ItemEnchantsComponent {
+  enchantments: EnchantmentList;
+  readonly id: string;
+  removeAllEnchantments(): void
+}
 export class ItemFoodComponent {
   /**
    * If true, the player can always eat this item (even when not

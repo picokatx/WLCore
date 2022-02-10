@@ -3,15 +3,16 @@ import { ColorCodes } from "../constants/ColorCodes.js";
 import { CustomCharID } from "../constants/CustomCharID.js";
 import { WLStream } from "./WLStream.js";
 import { getAttributes, getMethods } from "./StringifyObject.js";
+import { Entity } from "../types/Entity.js";
 export const filter: RegExp = RegExp(/[^\w\d\s]/);
 export const notifPrefix: string = `${ColorCodes.grey}[${ColorCodes.darkgreen}${ColorCodes.bold}MCWL${ColorCodes.reset}${ColorCodes.grey}]`
 export class PrintStream {
     private hasError: boolean = false;
     private debugEnabled: boolean = true;
-    private printable: Dimension | Player;
+    private printable: Dimension | Entity;
     private outputStream: string = "";
     private queued: string[] = [];
-    constructor(printable: Dimension | Player) {
+    constructor(printable: Dimension | Entity) {
         this.printable = printable;
     }
     broadcast() {
@@ -57,7 +58,7 @@ export class PrintStream {
     print(s: any): void {
         switch (typeof s) {
             case 'string':
-                this.outputStream += this.cleanText(s);
+                this.outputStream += PrintStream.cleanText(s);
                 break;
             case 'number':
                 this.outputStream += s + "";
@@ -105,11 +106,12 @@ export class PrintStream {
             this.queued.push(WLStream.tellraw(`${notifPrefix} ${ColorCodes.darkred}${this.format(s, args)}${ColorCodes.reset}`));
         }
     }
-    globalRun(s: string) {
-        this.queued.push(WLStream.runGlobal(s));
-    }
-    run(s: string, player: Player) {
-        this.queued.push(WLStream.run(s, player));
+    run(s: string) {
+        if (this.printable instanceof Player) {
+            this.queued.push(WLStream.run(s, this.printable));
+        } else {
+            this.queued.push(WLStream.runGlobal(s));
+        }
     }
     format(s: string, args: any[]) {
         let a = Array.from(args);
@@ -134,26 +136,30 @@ export class PrintStream {
         this.queued.push(WLStream.tellraw(this.outputStream));
         this.outputStream = "";
     }
-    chat(s: string, player: Player, targets: EntityIterator) {
+    chat(s: string, targets: EntityIterator) {
         this.flush();
-        for (let i of targets) {
-            this.queued.push(WLStream.chat(this.replaceWithEmotes(s), player, (i as Player).name));
+        if (this.printable instanceof Player) {
+            for (let i of targets) {
+                this.queued.push(WLStream.chat(PrintStream.replaceWithEmotes(s), this.printable, i.nameTag));
+            }
+        } else {
+            this.queued.push(WLStream.consoleChat(PrintStream.replaceWithEmotes(s)));
         }
     }
     sudoChat(s: string, name: string, target: string) {
         this.flush();
-        this.queued.push(WLStream.sudoChat(this.replaceWithEmotes(s), name, target));
+        this.queued.push(WLStream.sudoChat(PrintStream.replaceWithEmotes(s), name, target));
     }
-    cleanText(s: string): string {
+    static cleanText(s: string): string {
         return s.replace(RegExp(/(?<!\\)\"/g), "\\\"")
     }
     debug(s: string) {
         this.flush();
         if (this.debugEnabled) {
-            this.queued.push(WLStream.tellraw(`[${ColorCodes.blue}DEBUG${ColorCodes.reset}] ${this.cleanText(s)}`));
+            this.queued.push(WLStream.tellraw(`[${ColorCodes.blue}DEBUG${ColorCodes.reset}] ${PrintStream.cleanText(s)}`));
         }
     }
-    replaceWithEmotes(s: string) {
+    static replaceWithEmotes(s: string) {
         let ret = s;
         for (let i of Object.entries(CustomCharID)) {
             ret = ret.replace(new RegExp(`:${i[0]}:`, 'g'), i[1].toString());

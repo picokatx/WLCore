@@ -1,4 +1,5 @@
 import { Player } from "mojang-minecraft";
+import { notifPrefix } from "./PrintStream";
 
 export class WLStream {
     static runGlobal(s: string) {
@@ -12,6 +13,12 @@ export class WLStream {
     }
     static sudoChat(s: string, name: string, target: string) {
         return `tellraw ${target} {"rawtext":[{"text":"<${name}> ${s}"}]}`;
+    }
+    static globalChat(s: string, player: Player) {
+        return `tellraw @a {"rawtext":[{"text":"<${player.name}> ${s}"}]}`;
+    }
+    static consoleChat(s: string) {
+        return `tellraw @a {"rawtext":[{"text":"<${notifPrefix}> ${s}"}]}`;
     }
     static tellraw(s: string): string {
         return `tellraw @a {"rawtext":[{"text":"${s}"}]}`;

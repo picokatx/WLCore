@@ -1,6 +1,7 @@
 import { MinecraftBlockTypes } from "mojang-minecraft";
 import { printStream } from "../../Main";
 import { _EffectType, _Entity, _EntityAddRiderComponent, _EntityAgeableComponent, _EntityBreathableComponent, _EntityColorComponent, _EntityFlyingSpeedComponent, _EntityHealableComponent, _EntityHealthComponent, _EntityInventoryComponent, _EntityLavaMovementComponent, _EntityLeashableComponent, _EntityMountTamingComponent, _EntityMovementAmphibiousComponent, _EntityMovementBasicComponent, _EntityMovementComponent, _EntityMovementFlyComponent, _EntityMovementGenericComponent, _EntityMovementGlideComponent, _EntityMovementHoverComponent, _EntityMovementJumpComponent, _EntityMovementSkipComponent, _EntityMovementSwayComponent, _EntityNavigationClimbComponent, _EntityNavigationFloatComponent, _EntityNavigationFlyComponent, _EntityNavigationGenericComponent, _EntityNavigationHoverComponent, _EntityNavigationWalkComponent, _EntityRideableComponent, _EntityStrengthComponent, _EntityTameableComponent, _IEntityComponent } from "../constants/exports";
+import { PrintStream } from "../log/PrintStream";
 import { Block } from "./Block";
 import { BlockLocation } from "./BlockLocation";
 import { BlockPermutation } from "./BlockPermutation";
@@ -12,11 +13,46 @@ import { EntityComponents } from "./EntityComponents";
 import { EntityRaycastOptions } from "./EntityRaycastOptions";
 import { Location } from "./Location";
 import { Vector } from "./Vector";
-
+export enum DamageCause {
+    all = "all",
+    anvil = "anvil",
+    block_explosion = "block_explosion",
+    charging = "charging",
+    contact = "contact",
+    drowning = "drowning",
+    entity_attack = "entity_attack",
+    entity_explosion = "entity_explosion",
+    fall = "fall",
+    falling_block = "falling_block",
+    fire = "fire",
+    fire_tick = "fire_tick",
+    fireworks = "fireworks",
+    fly_into_wall = "fly_into_wall",
+    freezing = "freezing",
+    lava = "lava",
+    lightning = "lightning",
+    magic = "magic",
+    magma = "magma",
+    none = "none",
+    override = "override",
+    piston = "piston",
+    projectile = "projectile",
+    stalactite = "stalactite",
+    stalagmite = "stalagmite",
+    starve = "starve",
+    suffocation = "suffocation",
+    suicide = "suicide",
+    temperature = "temperature",
+    thorns = "thorns",
+    void = "void",
+    wither = "wither"
+}
 export class Entity {
     _entity: _Entity
+    printStream: PrintStream
     constructor(entity: _Entity) {
         this._entity = entity
+        this.printStream = new PrintStream(this)
     }
     get bodyRotation(): number {
         return this._entity.bodyRotation
@@ -92,6 +128,9 @@ export class Entity {
     addEffect(effectType: EffectType, duration: number, amplifier: number): void {
         this._entity.addEffect(effectType, duration, amplifier)
     }
+    clearEffects(): void {
+        this.printStream.run(`effect @s clear`)
+    }
     addTag(tag: string): boolean {
         return this._entity.addTag(tag)
     }
@@ -143,17 +182,21 @@ export class Entity {
     ground(permutation: BlockPermutation): void {
         this.dimension.getBlock(this.location.toBLockLocation().below()).setPermutation(permutation)
     }
+    damage(amount: number, cause: DamageCause) {
+        this.printStream.run(`damage @s ${amount} ${cause}`)
+    }
     box(permutation: BlockPermutation): void {
-        let loc:BlockLocation = this.location.toBLockLocation()
+        let loc: BlockLocation = this.location.toBLockLocation()
         this.dimension.getBlock(loc.below()).setPermutation(permutation)
         this.dimension.getBlock(loc.above()).setPermutation(permutation)
-        this.dimension.getBlock(new BlockLocation(loc.x - 1,loc.y + 1,loc.z + 1)).setPermutation(permutation)
-        this.dimension.getBlock(new BlockLocation(loc.x - 1,loc.y + 1,loc.z - 1)).setPermutation(permutation)
-        this.dimension.getBlock(new BlockLocation(loc.x + 1,loc.y + 1,loc.z - 1)).setPermutation(permutation)
-        this.dimension.getBlock(new BlockLocation(loc.x + 1,loc.y + 1,loc.z + 1)).setPermutation(permutation)
-        this.dimension.getBlock(new BlockLocation(loc.x - 1,loc.y + 2,loc.z + 1)).setPermutation(permutation)
-        this.dimension.getBlock(new BlockLocation(loc.x - 1,loc.y + 2,loc.z - 1)).setPermutation(permutation)
-        this.dimension.getBlock(new BlockLocation(loc.x + 1,loc.y + 2,loc.z - 1)).setPermutation(permutation)
-        this.dimension.getBlock(new BlockLocation(loc.x + 1,loc.y + 2,loc.z + 1)).setPermutation(permutation)
+        this.dimension.getBlock(new BlockLocation(loc.x - 1, loc.y + 1, loc.z + 1)).setPermutation(permutation)
+        this.dimension.getBlock(new BlockLocation(loc.x - 1, loc.y + 1, loc.z - 1)).setPermutation(permutation)
+        this.dimension.getBlock(new BlockLocation(loc.x + 1, loc.y + 1, loc.z - 1)).setPermutation(permutation)
+        this.dimension.getBlock(new BlockLocation(loc.x + 1, loc.y + 1, loc.z + 1)).setPermutation(permutation)
+        this.dimension.getBlock(new BlockLocation(loc.x - 1, loc.y + 2, loc.z + 1)).setPermutation(permutation)
+        this.dimension.getBlock(new BlockLocation(loc.x - 1, loc.y + 2, loc.z - 1)).setPermutation(permutation)
+        this.dimension.getBlock(new BlockLocation(loc.x + 1, loc.y + 2, loc.z - 1)).setPermutation(permutation)
+        this.dimension.getBlock(new BlockLocation(loc.x + 1, loc.y + 2, loc.z + 1)).setPermutation(permutation)
     }
+    
 }
