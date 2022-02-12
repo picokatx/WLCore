@@ -72,6 +72,7 @@ world.events.tick.subscribe((eventData: TickEvent) => {
 world.events.blockBreak.subscribe((eventData: BlockBreakEvent) => {
 })
 world.events.blockPlace.subscribe((eventData: BlockPlaceEvent) => {
+
 })
 world.events.beforeChat.subscribe((eventData: BeforeChatEvent) => {
     let a = new Player(eventData.sender)

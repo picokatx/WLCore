@@ -2964,6 +2964,7 @@ export class EntityMovementComponent extends IEntityComponent {
 /**
 * When added, this move control causes the mob to fly.
 */
+
 export class EntityMovementFlyComponent extends IEntityComponent {
   /**
    * Identifier of this component. Should always be
@@ -12462,6 +12463,25 @@ export class Vector {
    * @param epsilon
    */
   isNear(other: Vector, epsilon: number): boolean;
+  /*- Added constant back
+  - Added constant down
+  - Added constant forward
+  - Added constant left
+  - Added constant one
+  - Added constant right
+  - Added constant up
+  - Added constant zero*/
+  add(other: Vector): Vector;
+  cross(other: Vector): Vector;
+  distance(other: Vector): number;
+  divide(other: Vector): Vector;
+  length(): number;
+  max(other: Vector): Vector;
+  min(other: Vector): Vector;
+  multiply(other: Vector): Vector;
+  normalized(): Vector;
+  subtract(other: Vector): Vector;
+
 }
 /**
 * Contains information related to changes in weather in the

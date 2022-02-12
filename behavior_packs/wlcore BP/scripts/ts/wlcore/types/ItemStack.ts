@@ -61,7 +61,9 @@ export class ItemStack {
         }
         this._itemStack.setLore(loreWemotes)
     }
-
+    setLoreRaw(loreList: string[]): void {
+        this._itemStack.setLore(loreList)
+    }
     getLore(): string[] {
         return this._itemStack.getLore()
     }

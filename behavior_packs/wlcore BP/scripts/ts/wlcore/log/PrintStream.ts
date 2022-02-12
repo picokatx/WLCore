@@ -85,25 +85,25 @@ export class PrintStream {
     success(s: string, args?: any[]) {
         this.flush();
         if (args == null) {
-            this.queued.push(WLStream.tellraw(`${notifPrefix} ${ColorCodes.blue}${s}${ColorCodes.reset}`));
+            this.queued.push(WLStream.targettedTellraw(`${notifPrefix} ${ColorCodes.blue}${s}${ColorCodes.reset}`,'@s'));
         } else {
-            this.queued.push(WLStream.tellraw(`${notifPrefix} ${ColorCodes.blue}${this.format(s, args)}${ColorCodes.reset}`));
+            this.queued.push(WLStream.targettedTellraw(`${notifPrefix} ${ColorCodes.blue}${this.format(s, args)}${ColorCodes.reset}`,'@s'));
         }
     }
     info(s: string, args?: any[]) {
         this.flush();
         if (args == null) {
-            this.queued.push(WLStream.tellraw(`${notifPrefix} ${ColorCodes.grey}${s}${ColorCodes.reset}`));
+            this.queued.push(WLStream.targettedTellraw(`${notifPrefix} ${ColorCodes.grey}${s}${ColorCodes.reset}`,'@s'));
         } else {
-            this.queued.push(WLStream.tellraw(`${notifPrefix} ${ColorCodes.grey}${this.format(s, args)}${ColorCodes.reset}`));
+            this.queued.push(WLStream.targettedTellraw(`${notifPrefix} ${ColorCodes.grey}${this.format(s, args)}${ColorCodes.reset}`,'@s'));
         }
     }
     failure(s: string, args?: any[]) {
         this.flush();
         if (args == null) {
-            this.queued.push(WLStream.tellraw(`${notifPrefix} ${ColorCodes.darkred}${s}${ColorCodes.reset}`));
+            this.queued.push(WLStream.targettedTellraw(`${notifPrefix} ${ColorCodes.darkred}${s}${ColorCodes.reset}`,'@s'));
         } else {
-            this.queued.push(WLStream.tellraw(`${notifPrefix} ${ColorCodes.darkred}${this.format(s, args)}${ColorCodes.reset}`));
+            this.queued.push(WLStream.targettedTellraw(`${notifPrefix} ${ColorCodes.darkred}${this.format(s, args)}${ColorCodes.reset}`,'@s'));
         }
     }
     run(s: string) {

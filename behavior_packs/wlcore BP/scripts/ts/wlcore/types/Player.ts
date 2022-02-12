@@ -2,12 +2,11 @@ import { _Player, _Block, _Entity, _IEntityComponent, _EntityInventoryComponent 
 import { Entity } from "./Entity.js"
 import { WLStream } from "../log/WLStream.js";
 import { v4 as uuidv4 } from "uuid"
-import { PrintStream } from "../log/PrintStream.js";
-import { EntityComponents } from "./EntityComponents.js";
-import { EntityInventoryComponent, Items, ItemStack, NumberRange, world } from "mojang-minecraft";
-import { MolangNamespaces, molangQueries } from "../constants/MolangNamespaces.js";
-import { DamageEntityTypes, DamagePlayerTypes } from "../constants/MCWLNamespaces.js";
+import { EntityComponents } from "../constants/EntityComponents.js";
+import { EntityInventoryComponent, Items, ItemStack, world } from "mojang-minecraft";
+import { molangQueries } from "../constants/MolangNamespaces.js";
 import { BlockLocation } from "./BlockLocation.js";
+import { Permissions } from "../command/Command.js";
 export enum GamemodeTypes {
     creative = "c",
     survival = "s",
@@ -84,10 +83,12 @@ export enum FogTypes {
     fog_warm_ocean = "minecraft:fog_warm_ocean",
     fog_warped_forest = "minecraft:fog_warped_forest"
 }
+
 export class Player extends Entity {
     _player: _Player
     uuid: string
     molangQueries: Map<string, boolean>
+    permissions: Permissions[]
     constructor(player: _Player) {
         super(player)
         this._player = player

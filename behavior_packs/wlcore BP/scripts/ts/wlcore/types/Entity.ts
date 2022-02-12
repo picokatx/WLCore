@@ -9,7 +9,7 @@ import { BlockRaycastOptions } from "./BlockRaycastOptions";
 import { Dimension } from "./Dimension";
 import { Effect } from "./Effect";
 import { EffectType } from "./EffectType";
-import { EntityComponents } from "./EntityComponents";
+import { EntityComponents } from "../constants/EntityComponents";
 import { EntityRaycastOptions } from "./EntityRaycastOptions";
 import { Location } from "./Location";
 import { Vector } from "./Vector";
