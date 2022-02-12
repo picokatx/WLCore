@@ -1,4 +1,4 @@
-import { _ItemCooldownComponent, _ItemDurabilityComponent, _ItemEnchantsComponent, _ItemFoodComponent, _ItemStack, _ItemType } from "../constants/exports";
+import { _ItemCooldownComponent, _ItemDurabilityComponent, _ItemEnchantsComponent, _ItemFoodComponent, _ItemStack, _ItemType } from "../constants/Exports";
 import { PrintStream } from "../log/PrintStream";
 export enum ItemComponents {
     enchants = "minecraft:enchantments",

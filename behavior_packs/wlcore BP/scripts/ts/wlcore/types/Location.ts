@@ -1,4 +1,4 @@
-import { _Location } from "../constants/exports";
+import { _Location } from "../constants/Exports";
 import { BlockLocation } from "./BlockLocation";
 
 export class Location {

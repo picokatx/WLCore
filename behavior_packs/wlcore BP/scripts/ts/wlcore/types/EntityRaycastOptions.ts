@@ -1,4 +1,4 @@
-import { _EntityRaycastOptions } from "../constants/exports"
+import { _EntityRaycastOptions } from "../constants/Exports"
 
 export class EntityRaycastOptions {
     _entityRaycastOptions: _EntityRaycastOptions

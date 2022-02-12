@@ -1,5 +1,5 @@
 import { BlockType, IBlockProperty } from "mojang-minecraft";
-import { _BlockPermutation } from "../constants/exports";
+import { _BlockPermutation } from "../constants/Exports";
 
 export class BlockPermutation {
     _blockPermutation: _BlockPermutation

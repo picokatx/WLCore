@@ -1,4 +1,4 @@
-import { _Block, _BlockInventoryComponent, _BlockLavaContainerComponent, _BlockPistonComponent, _BlockPotionContainerComponent, _BlockRecordPlayerComponent, _BlockSnowContainerComponent, _BlockType, _BlockWaterContainerComponent} from "../constants/exports"
+import { _Block, _BlockInventoryComponent, _BlockLavaContainerComponent, _BlockPistonComponent, _BlockPotionContainerComponent, _BlockRecordPlayerComponent, _BlockSnowContainerComponent, _BlockType, _BlockWaterContainerComponent} from "../constants/Exports"
 import { BlockPermutation } from "./BlockPermutation.js"
 import { BlockLocation } from "./BlockLocation"
 import { Dimension } from "./Dimension"

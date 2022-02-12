@@ -1,5 +1,5 @@
-import { _EntityIterator, _Events, _World, _EntityQueryOptions } from "../constants/exports";
-import { _world } from "../constants/exports";
+import { _EntityIterator, _Events, _World, _EntityQueryOptions, _SoundOptions } from "../constants/Exports";
+import { _world } from "../constants/Exports";
 import { Dimension } from "./Dimension";
 export enum DimensionTypes {
     overworld = 'overworld',
@@ -19,6 +19,9 @@ export class World {
     }
     getPlayers(options?: _EntityQueryOptions): _EntityIterator {
         return this._world.getPlayers(options)
+    }
+    playSound(soundName: String, soundOptions?: _SoundOptions): void {
+        return this._world.playSound(soundName,soundOptions)
     }
 }
 export const world = new World(_world)

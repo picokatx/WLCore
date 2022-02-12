@@ -64,5 +64,6 @@ export {
     ItemFoodComponent as _ItemFoodComponent,
     ItemDurabilityComponent as _ItemDurabilityComponent,
     ItemEnchantsComponent as _ItemEnchantsComponent,
-    ChatEvent as _ChatEvent
+    ChatEvent as _ChatEvent,
+    SoundOptions as _SoundOptions
 } from "mojang-minecraft";

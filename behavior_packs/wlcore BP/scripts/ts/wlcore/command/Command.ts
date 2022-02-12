@@ -1,4 +1,4 @@
-import { _ChatEvent } from "../constants/exports";
+import { _ChatEvent } from "../constants/Exports";
 import { LocaleNamespaces } from "../constants/LocaleNamespaces";
 import { locale } from "../constants/LocalisationStrings";
 import { Player } from "../types/Player";

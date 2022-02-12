@@ -1,4 +1,4 @@
-import { _Dimension, _ExplosionOptions, _EntityIterator, _EntityQueryOptions } from "../constants/exports";
+import { _Dimension, _ExplosionOptions, _EntityIterator, _EntityQueryOptions } from "../constants/Exports";
 import { Block } from "./Block";
 import { BlockLocation } from "./BlockLocation";
 import { BlockRaycastOptions } from "./BlockRaycastOptions";
