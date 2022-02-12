@@ -1,6 +1,6 @@
 import { MinecraftBlockTypes } from "mojang-minecraft";
 import { printStream } from "../../Main";
-import { _EffectType, _Entity, _EntityAddRiderComponent, _EntityAgeableComponent, _EntityBreathableComponent, _EntityColorComponent, _EntityFlyingSpeedComponent, _EntityHealableComponent, _EntityHealthComponent, _EntityInventoryComponent, _EntityLavaMovementComponent, _EntityLeashableComponent, _EntityMountTamingComponent, _EntityMovementAmphibiousComponent, _EntityMovementBasicComponent, _EntityMovementComponent, _EntityMovementFlyComponent, _EntityMovementGenericComponent, _EntityMovementGlideComponent, _EntityMovementHoverComponent, _EntityMovementJumpComponent, _EntityMovementSkipComponent, _EntityMovementSwayComponent, _EntityNavigationClimbComponent, _EntityNavigationFloatComponent, _EntityNavigationFlyComponent, _EntityNavigationGenericComponent, _EntityNavigationHoverComponent, _EntityNavigationWalkComponent, _EntityRideableComponent, _EntityStrengthComponent, _EntityTameableComponent, _IEntityComponent } from "../constants/exports";
+import { _EffectType, _Entity, _EntityAddRiderComponent, _EntityAgeableComponent, _EntityBreathableComponent, _EntityColorComponent, _EntityFlyingSpeedComponent, _EntityHealableComponent, _EntityHealthComponent, _EntityInventoryComponent, _EntityLavaMovementComponent, _EntityLeashableComponent, _EntityMountTamingComponent, _EntityMovementAmphibiousComponent, _EntityMovementBasicComponent, _EntityMovementComponent, _EntityMovementFlyComponent, _EntityMovementGenericComponent, _EntityMovementGlideComponent, _EntityMovementHoverComponent, _EntityMovementJumpComponent, _EntityMovementSkipComponent, _EntityMovementSwayComponent, _EntityNavigationClimbComponent, _EntityNavigationFloatComponent, _EntityNavigationFlyComponent, _EntityNavigationGenericComponent, _EntityNavigationHoverComponent, _EntityNavigationWalkComponent, _EntityRideableComponent, _EntityStrengthComponent, _EntityTameableComponent, _IEntityComponent } from "../constants/Exports";
 import { PrintStream } from "../log/PrintStream";
 import { Block } from "./Block";
 import { BlockLocation } from "./BlockLocation";
@@ -198,5 +198,5 @@ export class Entity {
         this.dimension.getBlock(new BlockLocation(loc.x + 1, loc.y + 2, loc.z - 1)).setPermutation(permutation)
         this.dimension.getBlock(new BlockLocation(loc.x + 1, loc.y + 2, loc.z + 1)).setPermutation(permutation)
     }
-    
+
 }
