@@ -1,8 +1,9 @@
-behavior_packs/wlcore BP/data
-db
-level.dat
-level.dat_old
-levelname.txt
-world_behavior_packs.json
-world_icon.jpeg
-world_resource_packs.json
+/behavior_packs/wlcore BP/data
+/behavior_packs/wlcore BP/scripts/ts/wlcore/todo.txt
+/db
+/level.dat
+/level.dat_old
+/levelname.txt
+/world_behavior_packs.json
+/world_icon.jpeg
+/world_resource_packs.json
