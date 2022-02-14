@@ -2,9 +2,18 @@ import { WLData, WLDataEntry } from "../data/WLData";
 import { _Player } from "../constants/Exports";
 import { TagData } from "../data/TagData";
 import { v4 } from "uuid";
+import { Player } from "../types/Player";
 export class PlayerTagDB {
     db: Map<string, WLData> = new Map<string, WLData>()
-    player: _Player
+    player: Player
+    constructor(player: Player, isNew: boolean) {
+        this.player = player
+        if (isNew) {
+            /*Initialize db here*/
+        } else {
+            this.loadDB()
+        }
+    }
     initEntry() {
         this.db.set(v4(), null)
     }

@@ -1,11 +1,7 @@
-import { _ItemCooldownComponent, _ItemDurabilityComponent, _ItemEnchantsComponent, _ItemFoodComponent, _ItemStack, _ItemType } from "../constants/Exports";
-import { PrintStream } from "../log/PrintStream";
-export enum ItemComponents {
-    enchants = "minecraft:enchantments",
-    food = "minecraft:food",
-    durability = "minecraft:durability",
-    cooldown = "minecraft:cooldown",
-}
+import { _ItemCooldownComponent, _ItemDurabilityComponent, _ItemEnchantsComponent, _ItemFoodComponent, _ItemStack, _ItemType } from "../constants/Exports.js";
+import { PrintStream } from "../log/PrintStream.js";
+import { ItemComponents } from "./ItemComponents.js";
+
 export class ItemStack {
     _itemStack: _ItemStack
     constructor(_itemStack: _ItemStack | _ItemType, amount?: number, data?: number) {

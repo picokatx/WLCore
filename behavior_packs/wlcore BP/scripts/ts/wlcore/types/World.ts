@@ -1,6 +1,6 @@
-import { _EntityIterator, _Events, _World, _EntityQueryOptions, _SoundOptions } from "../constants/Exports";
-import { _world } from "../constants/Exports";
-import { Dimension } from "./Dimension";
+import { _EntityIterator, _Events, _World, _EntityQueryOptions, _SoundOptions } from "../constants/Exports.js";
+import { _world } from "../constants/Exports.js";
+import { Dimension } from "./Dimension.js";
 export enum DimensionTypes {
     overworld = 'overworld',
     nether = 'nether',

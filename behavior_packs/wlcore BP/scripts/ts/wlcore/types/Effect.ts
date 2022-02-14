@@ -1,4 +1,4 @@
-import { _Effect } from "../constants/Exports";
+import { _Effect } from "../constants/Exports.js";
 export class Effect {
     _effect: _Effect
     constructor(_effect: _Effect) {

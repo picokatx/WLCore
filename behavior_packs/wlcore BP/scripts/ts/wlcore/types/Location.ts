@@ -1,5 +1,5 @@
-import { _Location } from "../constants/Exports";
-import { BlockLocation } from "./BlockLocation";
+import { _Location } from "../constants/Exports.js";
+import { BlockLocation } from "./BlockLocation.js";
 
 export class Location {
     _location: _Location
@@ -29,7 +29,7 @@ export class Location {
         this._location.z = coordinate
     }
     toBLockLocation(): BlockLocation {
-        return new BlockLocation(this.x,this.y,this.z)
+        return new BlockLocation(this.x, this.y, this.z)
     }
     equals(other: Location): boolean {
         return this._location.equals(other._location)

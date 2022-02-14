@@ -1,16 +1,9 @@
-import { _Block, _BlockInventoryComponent, _BlockLavaContainerComponent, _BlockPistonComponent, _BlockPotionContainerComponent, _BlockRecordPlayerComponent, _BlockSnowContainerComponent, _BlockType, _BlockWaterContainerComponent} from "../constants/Exports"
+import { _Block, _BlockInventoryComponent, _BlockLavaContainerComponent, _BlockPistonComponent, _BlockPotionContainerComponent, _BlockRecordPlayerComponent, _BlockSnowContainerComponent, _BlockType, _BlockWaterContainerComponent} from "../constants/Exports.js"
 import { BlockPermutation } from "./BlockPermutation.js"
-import { BlockLocation } from "./BlockLocation"
-import { Dimension } from "./Dimension"
-export enum BlockComponents {
-    inventory = "minecraft:inventory",
-    lavaContainer = "minecraft:lava_container",
-    piston = "minecraft:piston",
-    potionContainer = "minecraft:potion_container",
-    recordPlayer = "minecraft:record_player",
-    snowContainer = "minecraft:snow_container",
-    waterContainer = "minecraft:water_container"
-}
+import { BlockLocation } from "./BlockLocation.js"
+import { Dimension } from "./Dimension.js"
+import { BlockComponents } from "./BlockComponents.js"
+
 export class Block {
     _block: _Block
     constructor(_block:_Block) {

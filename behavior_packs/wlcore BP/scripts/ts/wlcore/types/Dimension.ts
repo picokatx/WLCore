@@ -1,11 +1,11 @@
-import { _Dimension, _ExplosionOptions, _EntityIterator, _EntityQueryOptions } from "../constants/Exports";
-import { Block } from "./Block";
-import { BlockLocation } from "./BlockLocation";
-import { BlockRaycastOptions } from "./BlockRaycastOptions";
-import { Vector } from "./Vector";
-import { Location } from "./Location";
-import { Entity } from "./Entity";
-import { EntityRaycastOptions } from "./EntityRaycastOptions";
+import { _Dimension, _ExplosionOptions, _EntityIterator, _EntityQueryOptions } from "../constants/Exports.js";
+import { Block } from "./Block.js";
+import { BlockLocation } from "./BlockLocation.js";
+import { BlockRaycastOptions } from "./BlockRaycastOptions.js";
+import { Vector } from "./Vector.js";
+import { Location } from "./Location.js";
+import { Entity } from "./Entity.js";
+import { EntityRaycastOptions } from "./EntityRaycastOptions.js";
 
 export class Dimension {
     _dimension: _Dimension

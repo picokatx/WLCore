@@ -1,52 +1,17 @@
-import { MinecraftBlockTypes } from "mojang-minecraft";
-import { printStream } from "../../Main";
-import { _EffectType, _Entity, _EntityAddRiderComponent, _EntityAgeableComponent, _EntityBreathableComponent, _EntityColorComponent, _EntityFlyingSpeedComponent, _EntityHealableComponent, _EntityHealthComponent, _EntityInventoryComponent, _EntityLavaMovementComponent, _EntityLeashableComponent, _EntityMountTamingComponent, _EntityMovementAmphibiousComponent, _EntityMovementBasicComponent, _EntityMovementComponent, _EntityMovementFlyComponent, _EntityMovementGenericComponent, _EntityMovementGlideComponent, _EntityMovementHoverComponent, _EntityMovementJumpComponent, _EntityMovementSkipComponent, _EntityMovementSwayComponent, _EntityNavigationClimbComponent, _EntityNavigationFloatComponent, _EntityNavigationFlyComponent, _EntityNavigationGenericComponent, _EntityNavigationHoverComponent, _EntityNavigationWalkComponent, _EntityRideableComponent, _EntityStrengthComponent, _EntityTameableComponent, _IEntityComponent } from "../constants/Exports";
-import { PrintStream } from "../log/PrintStream";
-import { Block } from "./Block";
-import { BlockLocation } from "./BlockLocation";
-import { BlockPermutation } from "./BlockPermutation";
-import { BlockRaycastOptions } from "./BlockRaycastOptions";
-import { Dimension } from "./Dimension";
-import { Effect } from "./Effect";
-import { EffectType } from "./EffectType";
-import { EntityComponents } from "../constants/EntityComponents";
-import { EntityRaycastOptions } from "./EntityRaycastOptions";
-import { Location } from "./Location";
-import { Vector } from "./Vector";
-export enum DamageCause {
-    all = "all",
-    anvil = "anvil",
-    block_explosion = "block_explosion",
-    charging = "charging",
-    contact = "contact",
-    drowning = "drowning",
-    entity_attack = "entity_attack",
-    entity_explosion = "entity_explosion",
-    fall = "fall",
-    falling_block = "falling_block",
-    fire = "fire",
-    fire_tick = "fire_tick",
-    fireworks = "fireworks",
-    fly_into_wall = "fly_into_wall",
-    freezing = "freezing",
-    lava = "lava",
-    lightning = "lightning",
-    magic = "magic",
-    magma = "magma",
-    none = "none",
-    override = "override",
-    piston = "piston",
-    projectile = "projectile",
-    stalactite = "stalactite",
-    stalagmite = "stalagmite",
-    starve = "starve",
-    suffocation = "suffocation",
-    suicide = "suicide",
-    temperature = "temperature",
-    thorns = "thorns",
-    void = "void",
-    wither = "wither"
-}
+import { _EffectType, _Entity, _EntityAddRiderComponent, _EntityAgeableComponent, _EntityBreathableComponent, _EntityColorComponent, _EntityFlyingSpeedComponent, _EntityHealableComponent, _EntityHealthComponent, _EntityInventoryComponent, _EntityLavaMovementComponent, _EntityLeashableComponent, _EntityMountTamingComponent, _EntityMovementAmphibiousComponent, _EntityMovementBasicComponent, _EntityMovementComponent, _EntityMovementFlyComponent, _EntityMovementGenericComponent, _EntityMovementGlideComponent, _EntityMovementHoverComponent, _EntityMovementJumpComponent, _EntityMovementSkipComponent, _EntityMovementSwayComponent, _EntityNavigationClimbComponent, _EntityNavigationFloatComponent, _EntityNavigationFlyComponent, _EntityNavigationGenericComponent, _EntityNavigationHoverComponent, _EntityNavigationWalkComponent, _EntityRideableComponent, _EntityStrengthComponent, _EntityTameableComponent, _IEntityComponent } from "../constants/Exports.js";
+import { PrintStream } from "../log/PrintStream.js";
+import { Block } from "./Block.js";
+import { BlockLocation } from "./BlockLocation.js";
+import { BlockPermutation } from "./BlockPermutation.js";
+import { BlockRaycastOptions } from "./BlockRaycastOptions.js";
+import { Dimension } from "./Dimension.js";
+import { Effect } from "./Effect.js";
+import { EffectType } from "./EffectType.js";
+import { EntityComponents } from "../constants/EntityComponents.js";
+import { EntityRaycastOptions } from "./EntityRaycastOptions.js";
+import { Location } from "./Location.js";
+import { Vector } from "./Vector.js";
+import { DamageCause } from "./DamageCause.js";
 export class Entity {
     _entity: _Entity
     printStream: PrintStream
