@@ -1,4 +1,4 @@
-import { _Dimension, _ExplosionOptions, _EntityIterator, _EntityQueryOptions } from "../constants/Exports.js";
+import { _Dimension, _ExplosionOptions, _EntityIterator, _EntityQueryOptions } from "./Exports.js";
 import { Block } from "./Block.js";
 import { BlockLocation } from "./BlockLocation.js";
 import { BlockRaycastOptions } from "./BlockRaycastOptions.js";

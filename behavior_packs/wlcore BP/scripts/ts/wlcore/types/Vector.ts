@@ -1,4 +1,4 @@
-import { _Vector } from "../constants/Exports.js";
+import { _Vector } from "./Exports.js";
 export class Vector {
     _vector: _Vector
     constructor(x: number | _Vector, y?: number, z?: number) {

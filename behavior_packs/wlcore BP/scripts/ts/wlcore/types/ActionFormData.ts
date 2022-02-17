@@ -1,5 +1,5 @@
-import { _ActionFormData, _ActionFormResponse } from "../constants/Exports";
-import { Player } from "./Player";
+import { _ActionFormData, _ActionFormResponse } from "./Exports.js";
+import { Player } from "./Player.js";
 class ActionFormData {
     _actionFormData: _ActionFormData
     constructor(_actionFormData: _ActionFormData) {

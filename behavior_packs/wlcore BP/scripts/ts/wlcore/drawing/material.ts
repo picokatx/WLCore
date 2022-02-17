@@ -2,7 +2,7 @@ import { Vec3 } from "../utils/vec3.js";
 import { RADIAN } from "../constants/MathConstants.js";
 import { DimensionTypes, world } from "../types/World.js";
 import { BlockLocation } from "../types/BlockLocation.js";
-import { _MinecraftBlockTypes } from "../constants/Exports.js";
+import { _MinecraftBlockTypes } from "../types/Exports.js";
 import { BlockPermutation } from "../types/BlockPermutation.js";
 export class Material {
     namespace: string;

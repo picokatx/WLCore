@@ -1,4 +1,4 @@
-import { _ChatEvent } from "../constants/Exports.js";
+import { _ChatEvent } from "../types/Exports.js";
 import { LocaleNamespaces } from "../constants/LocaleNamespaces.js";
 import { locale } from "../constants/LocalisationStrings.js";
 import { Player } from "../types/Player.js";

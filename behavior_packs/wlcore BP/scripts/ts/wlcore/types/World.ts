@@ -1,5 +1,5 @@
-import { _EntityIterator, _Events, _World, _EntityQueryOptions, _SoundOptions } from "../constants/Exports.js";
-import { _world } from "../constants/Exports.js";
+import { _EntityIterator, _Events, _World, _EntityQueryOptions, _SoundOptions } from "./Exports.js";
+import { _world } from "./Exports.js";
 import { Dimension } from "./Dimension.js";
 export enum DimensionTypes {
     overworld = 'overworld',

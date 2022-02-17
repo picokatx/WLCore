@@ -1,5 +1,4 @@
-import { BlockType, IBlockProperty } from "mojang-minecraft";
-import { _BlockPermutation } from "../constants/Exports.js";
+import { _BlockPermutation, _IBlockProperty } from "./Exports.js";
 
 export class BlockPermutation {
     _blockPermutation: _BlockPermutation
@@ -12,10 +11,10 @@ export class BlockPermutation {
     clone(): BlockPermutation {
         return new BlockPermutation(this._blockPermutation.clone())
     }
-    getAllProperties(): IBlockProperty[] {
+    getAllProperties(): _IBlockProperty[] {
         return this._blockPermutation.getAllProperties()
     }
-    getProperty(propertyName: string): IBlockProperty {
+    getProperty(propertyName: string): _IBlockProperty {
         return this._blockPermutation.getProperty(propertyName)
     }
     getTags(): string[] {

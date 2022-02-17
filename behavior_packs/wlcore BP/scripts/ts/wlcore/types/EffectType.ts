@@ -1,4 +1,4 @@
-import { _EffectType } from "../constants/Exports.js"
+import { _EffectType } from "./Exports.js"
 export class EffectType {
     _effectType: _EffectType
     getName(): string {

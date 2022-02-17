@@ -1,4 +1,4 @@
-import { _BlockRaycastOptions } from "../constants/Exports.js";
+import { _BlockRaycastOptions } from "./Exports.js";
 export class BlockRaycastOptions {
     _blockRaycastOptions: _BlockRaycastOptions
     constructor(

@@ -10,7 +10,7 @@ export class PlayerTagDB {
         if (isNew) {
             /*Initialize db here*/
         } else {
-            this.loadDB()
+            this.load()
         }
     }
     initEntry() {
@@ -22,7 +22,7 @@ export class PlayerTagDB {
     findEntryByTagID(uuid: string): any {
         return this.db.get(uuid)
     }
-    loadDB() {
+    load() {
         let tags: string[] = this.player.getTags()
         tags.forEach((entry) => {
             let raw: WLDataEntry = WLDataEntry.fromJSON(JSON.parse(entry))
@@ -31,13 +31,13 @@ export class PlayerTagDB {
             this.db.set(id, wlData)
         })
     }
-    saveDB() {
+    save() {
         TagData.clearTags(this.player);
-        for (let i of this.stringifyDB()) {
+        for (let i of this.stringify()) {
             this.player.addTag(i);
         }
     }
-    stringifyDB(): string[] {
+    stringify(): string[] {
         let ret: string[] = []
         for (let i of this.db) {
             ret.push(PlayerTagDB.stringifyEntry(i[1], i[0]))

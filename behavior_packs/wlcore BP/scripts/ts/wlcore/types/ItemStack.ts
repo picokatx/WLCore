@@ -1,4 +1,4 @@
-import { _ItemCooldownComponent, _ItemDurabilityComponent, _ItemEnchantsComponent, _ItemFoodComponent, _ItemStack, _ItemType } from "../constants/Exports.js";
+import { _ItemCooldownComponent, _ItemDurabilityComponent, _ItemEnchantsComponent, _ItemFoodComponent, _ItemStack, _ItemType } from "./Exports.js";
 import { PrintStream } from "../log/PrintStream.js";
 import { ItemComponents } from "./ItemComponents.js";
 

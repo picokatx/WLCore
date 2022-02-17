@@ -1,4 +1,4 @@
-import { _EffectType, _Entity, _EntityAddRiderComponent, _EntityAgeableComponent, _EntityBreathableComponent, _EntityColorComponent, _EntityFlyingSpeedComponent, _EntityHealableComponent, _EntityHealthComponent, _EntityInventoryComponent, _EntityLavaMovementComponent, _EntityLeashableComponent, _EntityMountTamingComponent, _EntityMovementAmphibiousComponent, _EntityMovementBasicComponent, _EntityMovementComponent, _EntityMovementFlyComponent, _EntityMovementGenericComponent, _EntityMovementGlideComponent, _EntityMovementHoverComponent, _EntityMovementJumpComponent, _EntityMovementSkipComponent, _EntityMovementSwayComponent, _EntityNavigationClimbComponent, _EntityNavigationFloatComponent, _EntityNavigationFlyComponent, _EntityNavigationGenericComponent, _EntityNavigationHoverComponent, _EntityNavigationWalkComponent, _EntityRideableComponent, _EntityStrengthComponent, _EntityTameableComponent, _IEntityComponent } from "../constants/Exports.js";
+import { _EffectType, _Entity, _EntityAddRiderComponent, _EntityAgeableComponent, _EntityBreathableComponent, _EntityColorComponent, _EntityFlyingSpeedComponent, _EntityHealableComponent, _EntityHealthComponent, _EntityInventoryComponent, _EntityLavaMovementComponent, _EntityLeashableComponent, _EntityMountTamingComponent, _EntityMovementAmphibiousComponent, _EntityMovementBasicComponent, _EntityMovementComponent, _EntityMovementFlyComponent, _EntityMovementGenericComponent, _EntityMovementGlideComponent, _EntityMovementHoverComponent, _EntityMovementJumpComponent, _EntityMovementSkipComponent, _EntityMovementSwayComponent, _EntityNavigationClimbComponent, _EntityNavigationFloatComponent, _EntityNavigationFlyComponent, _EntityNavigationGenericComponent, _EntityNavigationHoverComponent, _EntityNavigationWalkComponent, _EntityRideableComponent, _EntityStrengthComponent, _EntityTameableComponent, _IEntityComponent } from "./Exports.js";
 import { PrintStream } from "../log/PrintStream.js";
 import { Block } from "./Block.js";
 import { BlockLocation } from "./BlockLocation.js";
@@ -7,7 +7,7 @@ import { BlockRaycastOptions } from "./BlockRaycastOptions.js";
 import { Dimension } from "./Dimension.js";
 import { Effect } from "./Effect.js";
 import { EffectType } from "./EffectType.js";
-import { EntityComponents } from "../constants/EntityComponents.js";
+import { EntityComponents } from "./EntityComponents.js";
 import { EntityRaycastOptions } from "./EntityRaycastOptions.js";
 import { Location } from "./Location.js";
 import { Vector } from "./Vector.js";

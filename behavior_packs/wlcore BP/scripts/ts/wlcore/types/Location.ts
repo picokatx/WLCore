@@ -1,4 +1,4 @@
-import { _Location } from "../constants/Exports.js";
+import { _Location } from "./Exports.js";
 import { BlockLocation } from "./BlockLocation.js";
 
 export class Location {

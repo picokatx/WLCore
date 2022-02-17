@@ -1,10 +1,10 @@
-import { _Player, _Block, _Entity, _IEntityComponent, _EntityInventoryComponent, _ModalFormData } from "../constants/Exports.js"
+import { _Player, _Block, _Entity, _IEntityComponent, _EntityInventoryComponent, _ModalFormData } from "./Exports.js"
 import { Entity } from "./Entity.js"
 import { WLStream } from "../log/WLStream.js";
 import { v4 as uuidv4 } from "uuid"
-import { EntityComponents } from "../constants/EntityComponents.js";
+import { EntityComponents } from "./EntityComponents.js";
 import { EntityInventoryComponent, Items, ItemStack, world } from "mojang-minecraft";
-import { molangQueries } from "../constants/MolangNamespaces.js";
+import { molangQueries } from "./MolangNamespaces.js";
 import { BlockLocation } from "./BlockLocation.js";
 import { Permissions } from "../command/Command.js";
 import { FogTypes } from "./FogTypes.js";
@@ -119,7 +119,7 @@ export class Player extends Entity {
         this.printStream.run(`gamemode ${gamemodeType}`)
     }
     say(msg: string): void {
-        this.printStream.run(WLStream.globalChat(msg, this._player))
+        this.printStream.run(WLStream.globalChat(msg, this))
     }
     tellRaw(msg: string): void {
         this.printStream.run(WLStream.targettedTellraw(msg, this.nameTag))

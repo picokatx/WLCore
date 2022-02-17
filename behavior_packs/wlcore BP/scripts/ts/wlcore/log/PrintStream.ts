@@ -1,9 +1,9 @@
-import { ColorCodes } from "../constants/ColorCodes.js";
+import { ColorCodes } from "../types/ColorCodes.js";
 import { CustomCharID } from "../constants/CustomCharID.js";
 import { WLStream } from "./WLStream.js";
 import { getAttributes, getMethods } from "./StringifyObject.js";
 import { Entity } from "../types/Entity.js";
-import { _Dimension, _EntityIterator } from "../constants/Exports.js";
+import { _Dimension, _EntityIterator } from "../types/Exports.js";
 import { Player } from "../types/Player.js";
 export const filter: RegExp = RegExp(/[^\w\d\s]/);
 export const notifPrefix: string = `${ColorCodes.grey}[${ColorCodes.darkgreen}${ColorCodes.bold}MCWL${ColorCodes.reset}${ColorCodes.grey}]`

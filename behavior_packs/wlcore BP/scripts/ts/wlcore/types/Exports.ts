@@ -16,7 +16,7 @@ export {
     ExplosionOptions as _ExplosionOptions,
     EntityIterator as _EntityIterator,
     EntityQueryOptions as _EntityQueryOptions,
-
+    IBlockProperty as _IBlockProperty,
     EntityInventoryComponent as _EntityInventoryComponent,
     EntityAgeableComponent as _EntityAgeableComponent,
     EntityColorComponent as _EntityColorComponent,

@@ -1,4 +1,4 @@
-import { _MessageFormData, _MessageFormResponse, _ModalFormData, _ModalFormResponse } from "../constants/Exports.js"
+import { _MessageFormData, _MessageFormResponse, _ModalFormData, _ModalFormResponse } from "./Exports.js"
 import { Player } from "./Player.js"
 
 class ModalFormData {
