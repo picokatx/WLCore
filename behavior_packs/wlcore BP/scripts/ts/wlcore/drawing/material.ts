@@ -1,7 +1,9 @@
-import * as Minecraft from "mojang-minecraft";
 import { Vec3 } from "../utils/vec3.js";
 import { RADIAN } from "../constants/MathConstants.js";
-import { MinecraftBlockTypes, world } from "mojang-minecraft";
+import { DimensionTypes, world } from "../types/World.js";
+import { BlockLocation } from "../types/BlockLocation.js";
+import { _MinecraftBlockTypes } from "../constants/Exports.js";
+import { BlockPermutation } from "../types/BlockPermutation.js";
 export class Material {
     namespace: string;
     vertexShader: VertexShader;
@@ -20,7 +22,7 @@ export class Material {
         fragmentArgs.set("location", blockLoc);
         let blockPerm = this.fragmentShader.execute(fragmentArgs);
         for (let i = 0; i < blockLoc.length; i++) {
-            world.getDimension("overworld").getBlock(blockLoc[i]).setPermutation(blockPerm[i]);
+            world.getDimension(DimensionTypes.overworld).getBlock(blockLoc[i]).setPermutation(blockPerm[i]);
         }
     }
     toString() {
@@ -40,7 +42,7 @@ export class VertexShader extends Shader {
     constructor(namespace: string) {
         super(namespace);
     }
-    execute(args: Map<string, any>): Minecraft.BlockLocation[] {
+    execute(args: Map<string, any>): BlockLocation[] {
         return;
     }
 }
@@ -48,7 +50,7 @@ export class FragmentShader extends Shader {
     constructor(namespace: string) {
         super(namespace);
     }
-    execute(args: Map<string, any>): Minecraft.BlockPermutation[] {
+    execute(args: Map<string, any>): BlockPermutation[] {
         return;
     }
 }
@@ -56,23 +58,23 @@ export class PointVertex extends VertexShader {
     constructor(namespace: string) {
         super(namespace);
     }
-    execute(args: Map<string, any>): Minecraft.BlockLocation[] {
+    execute(args: Map<string, any>): BlockLocation[] {
         let pt1: Vec3 = args.get("position");
-        return [new Minecraft.BlockLocation(pt1.x, pt1.y, pt1.z)];
+        return [new BlockLocation(pt1.x, pt1.y, pt1.z)];
     }
 }
 export class CuboidVertex extends VertexShader {
     constructor(namespace: string) {
         super(namespace);
     }
-    execute(args: Map<string, any>): Minecraft.BlockLocation[] {
+    execute(args: Map<string, any>): BlockLocation[] {
         let pt1: Vec3 = args.get("start");
         let pt2: Vec3 = args.get("end");
-        let ret: Minecraft.BlockLocation[] = [];
+        let ret: BlockLocation[] = [];
         for (let x = pt1.x; x <= pt2.x; x++) {
             for (let y = pt1.y; y <= pt2.y; y++) {
                 for (let z = pt1.z; z <= pt2.z; z++) {
-                    ret.push(new Minecraft.BlockLocation(x, y, z));
+                    ret.push(new BlockLocation(x, y, z));
                 }
             }
         }
@@ -83,11 +85,11 @@ export class LineVertex extends VertexShader {
     constructor(namespace: string) {
         super(namespace);
     }
-    execute(args: Map<string, any>): Minecraft.BlockLocation[] {
+    execute(args: Map<string, any>): BlockLocation[] {
         let pt1: Vec3 = args.get("pt1");
         let pt2: Vec3 = args.get("pt2");
         let x, y, z;
-        let ret: Minecraft.BlockLocation[] = [];
+        let ret: BlockLocation[] = [];
         let pt3 = pt2.clone().subtract(pt1);
         if (
             Math.max(Math.abs(pt3.x), Math.abs(pt3.y), Math.abs(pt3.z)) ==
@@ -100,7 +102,7 @@ export class LineVertex extends VertexShader {
             ) {
                 y = Math.round(((x - pt1.x) / pt3.x) * pt3.y + pt1.y);
                 z = Math.round(((x - pt1.x) / pt3.x) * pt3.z + pt1.z);
-                ret.push(new Minecraft.BlockLocation(x, y, z));
+                ret.push(new BlockLocation(x, y, z));
             }
         } else if (
             Math.max(Math.abs(pt3.x), Math.abs(pt3.y), Math.abs(pt3.z)) ==
@@ -113,7 +115,7 @@ export class LineVertex extends VertexShader {
             ) {
                 x = Math.round(((y - pt1.y) / pt3.y) * pt3.x + pt1.x);
                 z = Math.round(((y - pt1.y) / pt3.y) * pt3.z + pt1.z);
-                ret.push(new Minecraft.BlockLocation(x, y, z));
+                ret.push(new BlockLocation(x, y, z));
             }
         } else {
             for (
@@ -123,7 +125,7 @@ export class LineVertex extends VertexShader {
             ) {
                 y = Math.round(((z - pt1.z) / pt3.z) * pt3.y + pt1.y);
                 x = Math.round(((z - pt1.z) / pt3.z) * pt3.x + pt1.x);
-                ret.push(new Minecraft.BlockLocation(x, y, z));
+                ret.push(new BlockLocation(x, y, z));
             }
         }
         return ret;
@@ -133,14 +135,14 @@ export class CircleVertex extends VertexShader {
     constructor(namespace: string) {
         super(namespace);
     }
-    execute(args: Map<string, any>): Minecraft.BlockLocation[] {
+    execute(args: Map<string, any>): BlockLocation[] {
         let pt1: Vec3 = args.get("pt1");
         let radius: number = args.get("radius");
-        let ret: Minecraft.BlockLocation[] = [];
+        let ret: BlockLocation[] = [];
         const step = 360 / (Math.PI * radius * 64);
         for (let i = 0; i < Math.ceil(Math.PI * radius * 64); i++) {
             ret.push(
-                new Minecraft.BlockLocation(
+                new BlockLocation(
                     pt1.x + Math.round(radius * Math.sin(step * i * RADIAN)),
                     pt1.y,
                     pt1.z + Math.round(radius * Math.cos(step * i * RADIAN))
@@ -154,11 +156,11 @@ export class SphereVertex extends VertexShader {
     constructor(namespace: string) {
         super(namespace);
     }
-    execute(args: Map<string, any>): Minecraft.BlockLocation[] {
+    execute(args: Map<string, any>): BlockLocation[] {
         let pt1: Vec3 = args.get("pt1");
         let radius: number = args.get("radius");
         let precision: number = args.get("precision");
-        let ret: Minecraft.BlockLocation[] = [];
+        let ret: BlockLocation[] = [];
         const step = 360 / (Math.PI * radius * precision);
         for (let i = 0; i <= Math.ceil((Math.PI * radius * precision) / 4); i++) {
             for (let j = 0; j <= Math.ceil((Math.PI * radius * precision) / 4); j++) {
@@ -169,14 +171,14 @@ export class SphereVertex extends VertexShader {
                     radius * Math.sin(step * i * RADIAN) * Math.sin(step * j * RADIAN)
                 );
                 let z = Math.round(radius * Math.cos(step * j * RADIAN));
-                ret.push(new Minecraft.BlockLocation(pt1.x + x, pt1.y + y, pt1.z + z));
-                ret.push(new Minecraft.BlockLocation(pt1.x - x, pt1.y + y, pt1.z + z));
-                ret.push(new Minecraft.BlockLocation(pt1.x + x, pt1.y - y, pt1.z + z));
-                ret.push(new Minecraft.BlockLocation(pt1.x + x, pt1.y + y, pt1.z - z));
-                ret.push(new Minecraft.BlockLocation(pt1.x - x, pt1.y - y, pt1.z + z));
-                ret.push(new Minecraft.BlockLocation(pt1.x + x, pt1.y - y, pt1.z - z));
-                ret.push(new Minecraft.BlockLocation(pt1.x - x, pt1.y + y, pt1.z - z));
-                ret.push(new Minecraft.BlockLocation(pt1.x - x, pt1.y - y, pt1.z - z));
+                ret.push(new BlockLocation(pt1.x + x, pt1.y + y, pt1.z + z));
+                ret.push(new BlockLocation(pt1.x - x, pt1.y + y, pt1.z + z));
+                ret.push(new BlockLocation(pt1.x + x, pt1.y - y, pt1.z + z));
+                ret.push(new BlockLocation(pt1.x + x, pt1.y + y, pt1.z - z));
+                ret.push(new BlockLocation(pt1.x - x, pt1.y - y, pt1.z + z));
+                ret.push(new BlockLocation(pt1.x + x, pt1.y - y, pt1.z - z));
+                ret.push(new BlockLocation(pt1.x - x, pt1.y + y, pt1.z - z));
+                ret.push(new BlockLocation(pt1.x - x, pt1.y - y, pt1.z - z));
             }
         }
         return ret;
@@ -186,13 +188,13 @@ export class BaseFragment extends Shader {
     constructor(namespace: string) {
         super(namespace);
     }
-    execute(args: Map<string, any>): Minecraft.BlockPermutation[] {
-        let ret: Minecraft.BlockPermutation[] = [];
-        let vertex: Minecraft.BlockLocation[] = args.get("location");
+    execute(args: Map<string, any>): BlockPermutation[] {
+        let ret: BlockPermutation[] = [];
+        let vertex: BlockLocation[] = args.get("location");
         let block: string = args.get("block");
         for (let i of vertex) {
-            let blockData: Minecraft.BlockPermutation = (
-                MinecraftBlockTypes[block as keyof typeof MinecraftBlockTypes] as any
+            let blockData: BlockPermutation = (
+                _MinecraftBlockTypes[block as keyof typeof _MinecraftBlockTypes] as any
             ).createDefaultBlockPermutation();
             ret.push(blockData);
         }
@@ -203,13 +205,13 @@ export class UnweightedBlockDistFragment extends Shader {
     constructor(namespace: string) {
         super(namespace);
     }
-    execute(args: Map<string, any>): Minecraft.BlockPermutation[] {
-        let ret: Minecraft.BlockPermutation[] = [];
-        let vertex: Minecraft.BlockLocation[] = args.get("location");
+    execute(args: Map<string, any>): BlockPermutation[] {
+        let ret: BlockPermutation[] = [];
+        let vertex: BlockLocation[] = args.get("location");
         let block: string[] = args.get("blocks");
         for (let i of vertex) {
-            let blockData: Minecraft.BlockPermutation = (
-                MinecraftBlockTypes[block[Math.floor(Math.random() * (block.length))] as keyof typeof MinecraftBlockTypes] as any
+            let blockData: BlockPermutation = (
+                _MinecraftBlockTypes[block[Math.floor(Math.random() * (block.length))] as keyof typeof _MinecraftBlockTypes] as any
             ).createDefaultBlockPermutation();
             ret.push(blockData);
         }

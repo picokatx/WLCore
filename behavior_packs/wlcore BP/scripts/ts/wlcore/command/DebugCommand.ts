@@ -1,9 +1,9 @@
-import { LocaleNamespaces } from "../constants/LocaleNamespaces";
-import { locale } from "../constants/LocalisationStrings";
-import { Player } from "../types/Player";
-import { Command, Permissions } from "./Command";
-import { CommandFormat, StringParameter } from "./CommandParameter";
-import { MCWLCommandReturn } from "./MCWLCmdReturn";
+import { LocaleNamespaces } from "../constants/LocaleNamespaces.js";
+import { locale } from "../constants/LocalisationStrings.js";
+import { Player } from "../types/Player.js";
+import { Command, Permissions } from "./Command.js";
+import { CommandFormat, StringParameter } from "./CommandParameter.js";
+import { MCWLCommandReturn } from "./MCWLCmdReturn.js";
 
 export class DebugCommand implements Command {
     name: string;

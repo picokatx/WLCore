@@ -1,10 +1,10 @@
-import { _ChatEvent } from "../constants/Exports";
-import { LocaleNamespaces } from "../constants/LocaleNamespaces";
-import { locale } from "../constants/LocalisationStrings";
-import { Player } from "../types/Player";
-import { CommandFormat } from "./CommandParameter";
-import { DebugCommand } from "./DebugCommand";
-import { MCWLCommandReturn } from "./MCWLCmdReturn";
+import { _ChatEvent } from "../constants/Exports.js";
+import { LocaleNamespaces } from "../constants/LocaleNamespaces.js";
+import { locale } from "../constants/LocalisationStrings.js";
+import { Player } from "../types/Player.js";
+import { CommandFormat } from "./CommandParameter.js";
+import { DebugCommand } from "./DebugCommand.js";
+import { MCWLCommandReturn } from "./MCWLCmdReturn.js";
 const commands: Command[] = [
     new DebugCommand()
 ]

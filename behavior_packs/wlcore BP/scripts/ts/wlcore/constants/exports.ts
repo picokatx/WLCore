@@ -65,7 +65,8 @@ export {
     ItemDurabilityComponent as _ItemDurabilityComponent,
     ItemEnchantsComponent as _ItemEnchantsComponent,
     ChatEvent as _ChatEvent,
-    SoundOptions as _SoundOptions
+    SoundOptions as _SoundOptions,
+    MinecraftBlockTypes as _MinecraftBlockTypes
 } from "mojang-minecraft";
 export {
     ModalFormData as _ModalFormData,

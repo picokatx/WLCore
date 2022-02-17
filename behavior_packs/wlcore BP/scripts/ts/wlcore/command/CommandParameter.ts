@@ -1,5 +1,3 @@
-import { Location } from "../types/Location"
-
 export const ARG_TYPE = {
     DEFAULT: RegExp(/.+/),
     NUMBER: RegExp(/((?:-|)\d+)/),

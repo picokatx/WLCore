@@ -1,4 +1,4 @@
-import { Player } from "mojang-minecraft";
+import { Player } from "../types/Player";
 import { notifPrefix } from "./PrintStream";
 
 export class WLStream {

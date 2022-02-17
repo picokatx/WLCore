@@ -1,18 +1,19 @@
-import { Dimension, EntityIterator, Player } from "mojang-minecraft";
 import { ColorCodes } from "../constants/ColorCodes.js";
 import { CustomCharID } from "../constants/CustomCharID.js";
 import { WLStream } from "./WLStream.js";
 import { getAttributes, getMethods } from "./StringifyObject.js";
 import { Entity } from "../types/Entity.js";
+import { _Dimension, _EntityIterator } from "../constants/Exports.js";
+import { Player } from "../types/Player.js";
 export const filter: RegExp = RegExp(/[^\w\d\s]/);
 export const notifPrefix: string = `${ColorCodes.grey}[${ColorCodes.darkgreen}${ColorCodes.bold}MCWL${ColorCodes.reset}${ColorCodes.grey}]`
 export class PrintStream {
     private hasError: boolean = false;
     private debugEnabled: boolean = true;
-    private printable: Dimension | Entity;
+    private printable: _Dimension | Entity;
     private outputStream: string = "";
     private queued: string[] = [];
-    constructor(printable: Dimension | Entity) {
+    constructor(printable: _Dimension | Entity) {
         this.printable = printable;
     }
     broadcast() {
@@ -136,7 +137,7 @@ export class PrintStream {
         this.queued.push(WLStream.tellraw(this.outputStream));
         this.outputStream = "";
     }
-    chat(s: string, targets: EntityIterator) {
+    chat(s: string, targets: _EntityIterator) {
         this.flush();
         if (this.printable instanceof Player) {
             for (let i of targets) {

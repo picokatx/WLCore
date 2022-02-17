@@ -1,8 +1,7 @@
-import { WLData, WLDataEntry } from "../data/WLData";
-import { _Player } from "../constants/Exports";
-import { TagData } from "../data/TagData";
+import { WLData, WLDataEntry } from "../data/WLData.js";
+import { TagData } from "../data/TagData.js";
 import { v4 } from "uuid";
-import { Player } from "../types/Player";
+import { Player } from "../types/Player.js";
 export class PlayerTagDB {
     db: Map<string, WLData> = new Map<string, WLData>()
     player: Player

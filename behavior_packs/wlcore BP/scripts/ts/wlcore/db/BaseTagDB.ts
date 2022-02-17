@@ -1,4 +1,4 @@
-import { Player } from "mojang-minecraft";
+import { Player } from "../types/Player.js";
 import { BaseTagEntry } from "./BaseTagEntry.js";
 
 export interface BaseTagDB {
