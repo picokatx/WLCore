@@ -1,4 +1,4 @@
-import { _Player, _Block, _Entity, _IEntityComponent, _EntityInventoryComponent } from "../constants/Exports.js"
+import { _Player, _Block, _Entity, _IEntityComponent, _EntityInventoryComponent, _ModalFormData } from "../constants/Exports.js"
 import { Entity } from "./Entity.js"
 import { WLStream } from "../log/WLStream.js";
 import { v4 as uuidv4 } from "uuid"

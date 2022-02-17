@@ -67,3 +67,11 @@ export {
     ChatEvent as _ChatEvent,
     SoundOptions as _SoundOptions
 } from "mojang-minecraft";
+export {
+    ModalFormData as _ModalFormData,
+    ModalFormResponse as _ModalFormResponse,
+    ActionFormData as _ActionFormData,
+    ActionFormResponse as _ActionFormResponse,
+    MessageFormData as _MessageFormData,
+    MessageFormResponse as _MessageFormResponse,
+} from "mojang-minecraft-ui"
