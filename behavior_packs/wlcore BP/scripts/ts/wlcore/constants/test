@@ -31,7 +31,7 @@ strength
 tameable
 water_movement
 */
-_EntityAddRiderComponent
+/*_EntityAddRiderComponent
 _EntityAgeableComponent
 _EntityBreathableComponent
 _EntityColorComponent
@@ -96,3 +96,5 @@ return this.getComponent(EntityComponents.) as
     get strength(): _EntityStrengthComponent {return this.getComponent(EntityComponents.strength) as _EntityStrengthComponent}
     get tameable(): _EntityTameableComponent {return this.getComponent(EntityComponents.tameable) as _EntityTameableComponent}
     get water_movement(): _EntityLavaMovementComponent {return this.getComponent(EntityComponents.water_movement) as _EntityLavaMovementComponent}
+    
+    */

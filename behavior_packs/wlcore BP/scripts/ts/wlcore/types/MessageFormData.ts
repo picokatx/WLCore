@@ -1,7 +1,7 @@
 import { _MessageFormData, _MessageFormResponse } from "./Exports.js"
 import { Player } from "./Player.js"
 
-class MessageFormData {
+export class MessageFormData {
     _messageFormData: _MessageFormData
     constructor(_messageFormData: _MessageFormData) {
         this._messageFormData = _messageFormData

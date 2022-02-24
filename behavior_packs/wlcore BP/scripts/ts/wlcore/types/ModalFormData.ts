@@ -1,10 +1,14 @@
 import { _MessageFormData, _MessageFormResponse, _ModalFormData, _ModalFormResponse } from "./Exports.js"
 import { Player } from "./Player.js"
 
-class ModalFormData {
+export class ModalFormData {
     _modalFormData: _ModalFormData
-    constructor(_modalFormData: _ModalFormData) {
-        this._modalFormData = _modalFormData
+    constructor(_modalFormData?: _ModalFormData) {
+        if (_modalFormData==null) {
+            this._modalFormData = new _ModalFormData()
+        } else {
+            this._modalFormData = _modalFormData
+        }
     }
     dropdown(label: string, options: string[], defaultValueIndex?: number): ModalFormData {
         return new ModalFormData(this._modalFormData.dropdown(label, options, defaultValueIndex))

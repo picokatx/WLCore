@@ -1,18 +1,14 @@
-import { world, BeforeChatEvent, PlayerJoinEvent, ChatEvent, BlockBreakEvent, TickEvent, Location, Player, BeforeItemUseOnEvent, Items, Block, PlayerLeaveEvent, BlockPlaceEvent, EntityIterator, BeforeDataDrivenEntityTriggerEvent, BeforeItemDefinitionEventSignal, BeforeItemDefinitionTriggeredEvent, ItemStack, BlockLocation, BeforeItemUseEvent, EntityInventoryComponent } from "mojang-minecraft";
-import { ModalFormData } from "mojang-minecraft-ui";
+import { world, BeforeChatEvent, PlayerJoinEvent, ChatEvent, BlockBreakEvent, TickEvent, Location, BeforeItemUseOnEvent, Items, Block, PlayerLeaveEvent, BlockPlaceEvent, EntityIterator, BeforeDataDrivenEntityTriggerEvent, BeforeItemDefinitionEventSignal, BeforeItemDefinitionTriggeredEvent, ItemStack, BlockLocation, BeforeItemUseEvent, EntityInventoryComponent } from "mojang-minecraft";
+import {ModalFormData} from "./wlcore/types/ModalFormData.js"
 import * as GameTest from "mojang-gametest"
 import { Command } from "./Command/Command.js";
-import { PlayerTag } from "./Utils/data/PlayerTag.js";
 import { PrintStream } from "./wlcore/log/PrintStream.js";
-import { Vec3 } from "./Utils/data/vec3.js";
 import { MCWLNamespaces } from "./Utils/constants/MCWLNamespaces.js";
 import { MCWLCommandReturn } from "./Command/MCWLCmdReturn.js";
 import { locale } from "./Utils/constants/LocalisationStrings.js";
-import { PlayerDB } from "./Utils/data/PlayerDB.js";
 import { Player } from "./wlcore/types/Player.js";
 export let printStream: PrintStream = new PrintStream(world.getDimension("overworld"));
 export let playerPrevLocDB: Map<string, Location> = new Map<string, Location>();
-export let playerDB: Map<string, PlayerDB> = new Map<string, PlayerDB>()
 export let playerPrevHealthDB: Map<string, number> = new Map<string, number>();
 
 export let commands: Command[] = []
@@ -32,7 +28,7 @@ world.events.beforeItemDefinitionEvent.subscribe((eventData: BeforeItemDefinitio
             let a: ModalFormData = new ModalFormData();
             a.title("MCWL GUI")
             a.textField("Please Review our addon", "Review")
-            a.show(eventData.source as Player).then(a => {
+            a.show(eventData.source as unknown as Player).then(a => {
                 for (let i of a.formValues) {
                     printStream.println(i)
                 }
@@ -75,7 +71,6 @@ world.events.blockPlace.subscribe((eventData: BlockPlaceEvent) => {
 
 })
 world.events.beforeChat.subscribe((eventData: BeforeChatEvent) => {
-    let a = new Player(eventData.sender)
     
 });
 function cmdHandler(chatEvent: ChatEvent) {

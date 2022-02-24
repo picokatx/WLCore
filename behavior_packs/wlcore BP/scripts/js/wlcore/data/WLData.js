@@ -1,78 +1,64 @@
 export class WLDataEntry {
-    id: string
-    wlData: WLData
-    constructor(id: string, wlData: WLData) {
-        this.wlData = wlData
-        this.id = id
+    constructor(id, wlData) {
+        this.wlData = wlData;
+        this.id = id;
     }
-    toJSON(): WLEntryData {
+    toJSON() {
         return Object.assign({}, this, {
             wlData: JSON.stringify(this.wlData)
         });
     }
-    static fromJSON(json: WLEntryData | string): WLDataEntry {
+    static fromJSON(json) {
         if (typeof json === 'string') {
             return JSON.parse(json, WLDataEntry.reviver);
-        } else {
-            return new WLDataEntry(json.id, WLData.fromJSON(json.wlData))
+        }
+        else {
+            return new WLDataEntry(json.id, WLData.fromJSON(json.wlData));
         }
     }
-    static reviver(key: string, value: any): any {
+    static reviver(key, value) {
         return key === "" ? WLDataEntry.fromJSON(value) : value;
     }
 }
-export const WLDataTypes: Map<string, object> = new Map<string, object>([
-
-])
-interface WLEntryData {
-    id: string
-    wlData: WLData
-}
+export const WLDataTypes = new Map([]);
 export class WLData {
-    data: any
-    type: string
-    name: string
-    format: string
-    constructor(data: any, type: string, name: string) {
+    constructor(data, type, name) {
         this.type = type;
         this.name = name;
-        this.format = "v1.0"
-        this.data = data
+        this.format = "v1.0";
+        this.data = data;
     }
-    toJSON(): WLJSONData {
+    toJSON() {
         if (!(this.type == 'string' || this.type == 'number' || this.type == 'boolean')) {
             return Object.assign({}, this, {
                 data: JSON.stringify(this.data)
             });
-        } else {
+        }
+        else {
             return Object.assign({}, this, {
                 data: this.data.toString()
             });
         }
     }
-    static fromJSON(json: WLJSONData | string): WLData {
+    static fromJSON(json) {
         if (typeof json === 'string') {
             return JSON.parse(json, WLData.reviver);
-        } else {
+        }
+        else {
             let user = Object.create(WLData.prototype);
             if (!(json.type == 'string' || json.type == 'number' || json.type == 'boolean')) {
                 return Object.assign(user, json, {
                     data: JSON.parse(json.data)
                 });
-            } else {
+            }
+            else {
                 return Object.assign(user, json, {
                     data: json.type == 'string' ? json.data : (json.type == 'number' ? parseFloat(json.data) : json.type.toString() === 'true')
                 });
             }
         }
     }
-    static reviver(key: string, value: any): any {
+    static reviver(key, value) {
         return key === "" ? WLData.fromJSON(value) : value;
     }
-}
-interface WLJSONData {
-    data: any;
-    type: string;
-    name: string
-    format: string
 }

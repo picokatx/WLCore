@@ -320,7 +320,7 @@ declare module "mojang-gametest" {
          * Current speed of the player across X, Y, and Z dimensions.
          * @throws This property can throw when used.
          */
-        readonly "velocity": mojangminecraft.Location;
+        readonly "velocity": mojangminecraft.Vector;
         /**
          * @remarks
          * Adds an effect, like poison, to the entity.
